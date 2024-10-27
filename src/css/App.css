@@ -1,0 +1,104 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+}
+
+header h1 {
+  flex-grow: 0;
+  margin-right: 20px; 
+}
+
+.search-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 900px;
+  padding: 8px;
+}
+
+.button-container {
+  display: flex;
+}
+
+.post-button, .login-button {
+  padding: 10px 20px; 
+  margin-left: 10px;
+  background-color: #fff;
+  color: #007BFF;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  width: 80px;
+  height: 40px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.post-button:hover, .login-button:hover {
+  background-color: #f0f0f0;
+}
+
+.login-container, .signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box, .signup-box {
+  background-color: #fff;
+  padding: 40px;
+  width: 500px; 
+  box-shadow: 0px 0px 10px 0px #000;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-box h2, .signup-box h2 {
+  color: #007BFF;
+}
+
+input {
+  display: block;
+  margin-bottom: 20px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  padding: 15px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 20px; 
+}
+
+button:last-child {
+  margin-bottom: 0; 
+}
+
+button:hover {
+  background-color: #0056b3;
+}
