@@ -4,7 +4,7 @@ import { auth, db } from './firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 
-const Signup = () => {
+const Signup = ({ setPopupMessage }) => {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,20 +14,29 @@ const Signup = () => {
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
-      alert("Passwords don't match");
+      setPopupMessage({ text: "Passwords don't match", type: 'error' });
+      setTimeout(() => setPopupMessage({ text: '', type: '' }), 3000);
       return;
     }
 
     try {
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
-      await setDoc(doc(db, 'users', user.uid), {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log('Signup successful:', userCredential.user); // Debug line
+      await setDoc(doc(db, 'users', userCredential.user.uid), {
         displayName: `${name} ${lastName}`,
-        email: user.email,
-        createdAt: new Date()
+        email: userCredential.user.email,
+        createdAt: new Date(),
       });
-      navigate('/login');
+      setPopupMessage({ text: 'Account created successfully!', type: 'success' });
+      navigate('/home'); // Navigate after signup is confirmed
+      setTimeout(() => setPopupMessage({ text: '', type: '' }), 3000);
     } catch (error) {
-      console.error('Registration failed:', error);
+      if (error.code === 'auth/email-already-in-use') {
+        setPopupMessage({ text: 'Account already exists. Please login.', type: 'error' });
+      } else {
+        setPopupMessage({ text: 'Signup failed. Please try again.', type: 'error' });
+      }
+      setTimeout(() => setPopupMessage({ text: '', type: '' }), 3000);
     }
   };
 

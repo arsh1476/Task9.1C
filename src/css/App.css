@@ -1,10 +1,90 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #f9f9fb;
   margin: 0;
   padding: 0;
 }
 
+/* Headings */
+h2 {
+  color: #333;
+}
+
+/* Login and Signup Page Container */
+.login-container, .signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #007BFF, #00A4E4);
+}
+
+/* Login and Signup Box */
+.login-box, .signup-box {
+  background-color: #fff;
+  padding: 40px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Headings */
+.login-box h1, .signup-box h1 {
+  color: #007BFF;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+input {
+  display: block;
+  margin-bottom: 20px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Buttons */
+button {
+  padding: 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1em;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+button.signup-gradient {
+  background: linear-gradient(135deg, #007BFF, #00A4E4);
+}
+
+button.signup-gradient:hover {
+  background: linear-gradient(135deg, #0056b3, #006ba1);
+}
+
+/* Header */
 header {
   display: flex;
   align-items: center;
@@ -15,7 +95,7 @@ header {
 
 header h1 {
   flex-grow: 0;
-  margin-right: 20px; 
+  margin-right: 20px;
 }
 
 .search-container {
@@ -30,12 +110,13 @@ header h1 {
   padding: 8px;
 }
 
+/* Button Container */
 .button-container {
   display: flex;
 }
 
 .post-button, .login-button {
-  padding: 10px 20px; 
+  padding: 10px 20px;
   margin-left: 10px;
   background-color: #fff;
   color: #007BFF;
@@ -43,7 +124,7 @@ header h1 {
   cursor: pointer;
   font-size: 0.9em;
   width: 80px;
-  height: 40px; 
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,51 +135,73 @@ header h1 {
   background-color: #f0f0f0;
 }
 
-.login-container, .signup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Link in the login box */
+.signup-link {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 15px;
 }
 
-.login-box, .signup-box {
-  background-color: #fff;
-  padding: 40px;
-  width: 500px; 
-  box-shadow: 0px 0px 10px 0px #000;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.login-box h2, .signup-box h2 {
+.signup-link span {
   color: #007BFF;
-}
-
-input {
-  display: block;
-  margin-bottom: 20px;
-  padding: 12px;
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-button {
-  padding: 15px 20px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
   cursor: pointer;
-  width: 100%;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-bottom: 20px; 
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-button:last-child {
-  margin-bottom: 0; 
+.signup-link span:hover {
+  color: #0056b3;
 }
 
-button:hover {
-  background-color: #0056b3;
+/* Pop-up Message */
+.popup-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeInOut 3s ease;
+  opacity: 0.95;
+}
+
+.popup-message.success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.popup-message.error {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .login-box, .signup-box {
+    padding: 30px 20px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 0.9em;
+  }
 }

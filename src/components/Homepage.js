@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Homepage = () => {
+const Homepage = ({ isAuthenticated, onSignOut }) => {
   const navigate = useNavigate();
+
   return (
     <div className="homepage">
       <header>
@@ -12,7 +13,11 @@ const Homepage = () => {
         </div>
         <div className="button-container">
           <button className="post-button">Post</button>
-          <button className="login-button" onClick={() => navigate('/login')}>Login</button>
+          {isAuthenticated ? (
+            <button className="signout-button" onClick={onSignOut}>Sign out</button>
+          ) : (
+            <button className="login-button" onClick={() => navigate('/login')}>Login</button>
+          )}
         </div>
       </header>
     </div>
